@@ -1,0 +1,11 @@
+{
+  "name": "memoria2.0",
+  "version": "1.0.0",
+  "description": "A lightweight memory-tracking starter project for Memoria 2.0.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test"
+  }
+}
