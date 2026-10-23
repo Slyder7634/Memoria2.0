@@ -1,11 +1,21 @@
 {
-  "name": "memoria2.0",
+  "name": "memoria",
   "version": "1.0.0",
-  "description": "A lightweight memory-tracking starter project for Memoria 2.0.",
   "private": true,
   "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
-    "start": "node src/index.js",
-    "test": "node --test"
+    "dev": "concurrently -k -n server,client \"npm:dev --workspace @memoria/server\" \"npm:dev --workspace @memoria/client\"",
+    "build": "npm run build --workspace @memoria/server && npm run build --workspace @memoria/client",
+    "test": "npm run test --workspaces --if-present",
+    "db:generate": "npm run db:generate --workspace @memoria/server",
+    "db:migrate": "npm run db:migrate --workspace @memoria/server",
+    "db:seed": "npm run db:seed --workspace @memoria/server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }
